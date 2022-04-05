@@ -5,28 +5,21 @@ const scoreAffche = document.querySelector('.score');
 const phraseEcrire = document.querySelector('.phraseAEcrire');
 const phraseTest = document.querySelector('.phrase-test');
 const p = document.querySelector('.p');
-//
+let copy = document.getElementById("copyPhrase")
+    //
 let temps = 60;
 let score = 0;
 let phrasePourScore;
 tempsAffche.innerText = 'Temps :' + temps;
 scoreAffche.innerText = 'Score :' + score;
 
-
+// Gestion des messages pour voir si l'utilisateur à copier où non
 phraseEcrire.addEventListener('copy', (copyText))
 
-function copyText() {
-    let copy = document.getElementById("demo")
-    copy.innerHTML = "Tu as copié, je pensais pourvoir compter sur ta sincérité ..!";
-    setTimeout(() => {
-        copy.style.display = "none";
-    }, 3000);
-
-}
 
 
 
-// Mettre un start
+// Mettre un timer
 let timer = setInterval(time, 1000);
 
 function time() {
@@ -38,10 +31,10 @@ function time() {
         p.innerText = 'Vous avez Pu totaliser un Score de: ' + score + " points" + " En 60s ";
 
     }
+
 }
 
 // Prendre une phrase de l'api
-
 async function afficherNvPhrase() {
     const appel = await fetch(apicall);
     const resultats = await appel.json();
@@ -59,6 +52,7 @@ async function afficherNvPhrase() {
 }
 afficherNvPhrase()
 
+// Cette function nous permettra de savoir si les phrases ecrites par l'utilisateur 
 phraseTest.addEventListener("input", () => {
     const tableauPhrase = phraseEcrire.querySelectorAll('span');
     const tableauTest = phraseTest.value.split('');
@@ -91,3 +85,11 @@ phraseTest.addEventListener("input", () => {
     }
 
 })
+
+function copyText() {
+    copy.innerHTML = "Tu as copié(e), je pensais pourvoir compter sur ta sincérité ..! Une sanction te sera donc accordé(e). Pour éviter des triches, à chaque copie que tu feras des points seront enlevés";
+    setTimeout(() => {
+        copy.style.display = "none";
+    }, 9000);
+    score -= phrasePourScore;
+}
