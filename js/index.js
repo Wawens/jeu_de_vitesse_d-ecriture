@@ -87,7 +87,7 @@ phraseTest.addEventListener("input", () => {
 })
 
 function copyText() {
-    copy.innerHTML = "Tu as copié(e), je pensais pourvoir compter sur ta sincérité ..! Une sanction te sera donc accordé(e). Pour éviter des triches, à chaque copie que tu feras des points seront enlevés";
+    copy.innerHTML = "Tu as copié(e), je pensais pourvoir compter sur ta sincérité ..! Une sanction te sera donc accordé(e). Pour éviter des triches , à chaque copie que tu feras des points seront enlevés";
     setTimeout(() => {
         copy.style.display = "none";
     }, 9000);
